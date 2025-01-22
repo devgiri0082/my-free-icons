@@ -1,26 +1,29 @@
-const fs = require("node:fs/promises")
+const fs = require("node:fs/promises");
 async function main() {
-    const final = []
-    const svgs = "./svgs"
+    const final = [];
+    const svgs = "./svgs";
     try {
-        const content = await fs.readdir(svgs)
-        const chunk = []
-        content.forEach(icon => {
-            if (!icon.includes("brand")) {
-                if (chunk.length === 100) {
-                    final.push([...chunk])
-                    chunk.length = 0
-                }
-                chunk.push({
+        const collections = await fs.readdir(svgs);
+        const icons_collection = {};
+        collections.forEach(async (collection) => {
+            if (collection.startsWith(".")) return;
+            const icons = await fs.readdir(`${svgs}/${collection}`);
+            const each_col = {
+                name: collection,
+                icons: [],
+            };
+            icons.forEach(icon => {
+                if (icon.startsWith(".")) return;
+                each_col.icons.push({
                     title: icon.split(".")[0],
                     link: `https://raw.githubusercontent.com/devgiri0082/my-free-icons/refs/heads/master/svgs/${icon}`
                 })
             }
-        })
+        });
 
-        fs.writeFile("./svg.json", JSON.stringify(final))
+        fs.writeFile("./svg.json", JSON.stringify(final));
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
-main()
+main();
