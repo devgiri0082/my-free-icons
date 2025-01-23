@@ -1,14 +1,19 @@
 const fs = require("node:fs/promises");
 async function main() {
     const svgs = "./svgs";
+    const position = ["badges", "payment", "general"];
     try {
         const collections = await fs.readdir(svgs);
         const icons_collection = {};
         for (const collection of collections) {
             if (collection.startsWith(".")) continue;
             const icons = await fs.readdir(`${svgs}/${collection}`);
+            console.log(position, collection, position.indexOf(collection));
             const each_col = {
                 name: collection,
+                position: position.indexOf(collection) !== -1
+                    ? position.indexOf(collection)
+                    : position.length + 1,
                 icons: [],
             };
             icons.forEach((icon) => {
