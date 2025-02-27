@@ -103,6 +103,58 @@ const paymentBlockName = {
     "zelle_color.svg": "zelle color",
     "zenithbank_color.svg": "zenithbank color",
 };
+const badgeData = {
+    "SSL Secure Badge": {
+        "type": "SSL Secure Badge",
+        "title": "SSL Secure ",
+        "text": "100% Secure Checkout",
+    },
+    "Money-Back Guarantee": {
+        "type": "Money-Back Guarantee",
+        "title": "Money-Back Guarantee",
+        "text": "30-Day Money-Back Guarantee",
+    },
+    "Satisfaction Guarantee": {
+        "type": "Satisfaction Guarantee",
+        "title": "Satisfaction Guarantee",
+        "text": "100% Satisfaction Guaranteed",
+    },
+    "Payment Security Badge": {
+        "type": "Payment Security Badge",
+        "title": "Payment Security ",
+        "text": "100% Secure Payment",
+    },
+    "Privacy Protection Badge": {
+        "type": "Privacy Protection Badge",
+        "title": "Privacy Protection ",
+        "text": "Your Privacy is Protected",
+    },
+    "Trusted Payment Partners": {
+        "type": "Trusted Payment Partners",
+        "title": "Trusted Payment Partners",
+        "text": "Secure Payments via PayPal & More",
+    },
+    "Secure Checkout Badge": {
+        "type": "Secure Checkout Badge",
+        "title": "Secure Checkout ",
+        "text": "Safe & Secure Transactions",
+    },
+    "Free Shipping Badge": {
+        "type": "Free Shipping Badge",
+        "title": "Free Shipping ",
+        "text": "Free Shipping on All Orders",
+    },
+    "Fast Shipping Badge": {
+        "type": "Fast Shipping Badge",
+        "title": "Fast Shipping",
+        "text": "Fast Shipping Available",
+    },
+    "Worldwide Shipping Badge": {
+        "type": "Worldwide Shipping Badge",
+        "title": "Worldwide Shipping",
+        "text": "Worldwide Shipping",
+    },
+};
 async function main() {
     const svgs = "./svgs";
     const position = ["badge", "card", "general"];
@@ -122,17 +174,19 @@ async function main() {
             };
             icons.forEach((icon) => {
                 if (icon.startsWith(".")) return;
+                const title = icon.split(".")[0];
                 each_col.icons.push({
-                    title: icon.split(".")[0],
+                    title: title,
                     name: paymentBlockName[icon] || icon.split(".")[0],
                     link:
                         `https://raw.githubusercontent.com/devgiri0082/my-free-icons/refs/heads/master/svgs/${collection}/${icon}`,
+                    badgeTitle: badgeData[title]?.title ?? undefined,
+                    badgeText: badgeData[title]?.text ?? undefined,
                 });
             });
-            console.log(collection);
             icons_collection[collection] = each_col;
         }
-        //console.log(icons_collection);
+        console.log(icons_collection.badge);
         fs.writeFile("./svg.json", JSON.stringify(icons_collection));
     } catch (err) {
         console.log(err);
