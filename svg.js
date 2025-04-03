@@ -109,13 +109,13 @@ const badgeData = {
         "title": "SSL Secure ",
         "text": "100% Secure Checkout",
     },
-    "Money-Back Guarantee": {
+    "Money-Back Guarantee Badge": {
         "type": "Money-Back Guarantee",
         "title": "Money-Back Guarantee",
         "text": "30-Day Money-Back Guarantee",
     },
-    "Satisfaction Guarantee": {
-        "type": "Satisfaction Guarantee",
+    "Satisfaction Guarantee Badge": {
+        "type": "Satisfaction Guarantee Badge",
         "title": "Satisfaction Guarantee",
         "text": "100% Satisfaction Guaranteed",
     },
@@ -129,7 +129,7 @@ const badgeData = {
         "title": "Privacy Protection ",
         "text": "Your Privacy is Protected",
     },
-    "Trusted Payment Partners": {
+    "Trusted Payment Partners Badge": {
         "type": "Trusted Payment Partners",
         "title": "Trusted Payment Partners",
         "text": "Secure Payments via PayPal & More",
@@ -153,6 +153,81 @@ const badgeData = {
         "type": "Worldwide Shipping Badge",
         "title": "Worldwide Shipping",
         "text": "Worldwide Shipping",
+    },
+    "Easy Returns Badge": {
+        "type": "Easy Returns Badge",
+        "title": "Easy Returns",
+        "text": "Easy Returns & Exchanges",
+    },
+    "Customer Support Badge": {
+        "type": "Customer Support Badge",
+        "title": "Customer Support",
+        "text": "24/7 Customer Support",
+    },
+    "Verified Seller Badge": {
+        "type": "Verified Seller Badge",
+        "title": "Verified Seller",
+        "text": "Authorized & Verified Seller",
+    },
+    "Top Quality Badge": {
+        "type": "Top Quality Badge",
+        "title": "Top Quality",
+        "text": "High-Quality Guaranteed",
+    },
+    "Lifetime Warranty Badge": {
+        "type": "Lifetime Warranty Badge",
+        "title": "Lifetime Warranty",
+        "text": "Lifetime Warranty Included",
+    },
+    "Best Seller Badge": {
+        "type": "Best Seller Badge",
+        "title": "Best Seller",
+        "text": "Best Seller",
+    },
+    "Discreet Packaging Badge": {
+        "type": "Discreet Packaging Badge",
+        "title": "Discreet Packaging",
+        "text": "Discreet Packaging",
+    },
+    "Made In USA Badge": {
+        "type": "Made In USA Badge",
+        "title": "Made In USA",
+        "text": "Proudly Made in the USA",
+    },
+    "Made In Europe Badge": {
+        "type": "Made In Europe Badge",
+        "title": "Made In Europe",
+        "text": "Proudly Made in Europe",
+    },
+    "Handmade Badge": {
+        "type": "Handmade Badge",
+        "title": "Handmade",
+        "text": "Handmade with Care",
+    },
+    "Environmentally Friendly Badge": {
+        "type": "Environmentally Friendly Badge",
+        "title": "Environmentally Friendly",
+        "text": "Eco-Friendly Packaging",
+    },
+    "Lowest Price Badge": {
+        "type": "Lowest Price Badge",
+        "title": "Lowest Price",
+        "text": "Lowest Price Guaranteed",
+    },
+    "Special Offer Badge": {
+        "type": "Special Offer Badge",
+        "title": "Special Offer",
+        "text": "Limited Time Offer",
+    },
+    "365 Day Guarantee Badge": {
+        "type": "365 Day Guarantee",
+        "title": "365 Day Guarantee",
+        "text": "365-Day Guarantee",
+    },
+    "180 Day Guarantee Badge": {
+        "type": "180 Day Guarantee",
+        "title": "180 Day Guarantee",
+        "text": "180-Day Guarantee",
     },
 };
 async function main() {
@@ -180,8 +255,8 @@ async function main() {
                     name: paymentBlockName[icon] || icon.split(".")[0],
                     link:
                         `https://raw.githubusercontent.com/devgiri0082/my-free-icons/refs/heads/master/svgs/${collection}/${icon}`,
-                    badgeTitle: badgeData[title]?.title ?? undefined,
-                    badgeText: badgeData[title]?.text ?? undefined,
+                    badgeTitle: badgeData[`${title} Badge`]?.title ?? undefined,
+                    badgeText: badgeData[`${title} Badge`]?.text ?? undefined,
                 });
             });
             icons_collection[collection] = each_col;
