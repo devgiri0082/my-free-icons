@@ -232,7 +232,7 @@ const badgeData = {
 };
 async function main() {
     const svgs = "./svgs";
-    const position = ["badge", "card", "general"];
+    const position = ["badge", "card", "social", "general"];
     try {
         const collections = await fs.readdir(svgs);
         const icons_collection = {};
